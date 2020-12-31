@@ -1,3 +1,5 @@
+import { DemoScreen, QuestionScreen, WelcomeScreen } from "../screens"
+
 /**
  * This is the navigator you will modify to display the logged-in screens of your app.
  * You can use RootNavigator to also display an auth flow or other user flows.
@@ -6,7 +8,6 @@
  */
 import React from "react"
 import { createStackNavigator } from "@react-navigation/stack"
-import { WelcomeScreen, DemoScreen } from "../screens"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -23,6 +24,8 @@ import { WelcomeScreen, DemoScreen } from "../screens"
 export type PrimaryParamList = {
   welcome: undefined
   demo: undefined
+  question:undefined
+
 }
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
@@ -34,8 +37,10 @@ export function MainNavigator() {
       screenOptions={{
         headerShown: false,
       }}
+      initialRouteName="question"
     >
       <Stack.Screen name="welcome" component={WelcomeScreen} />
+      <Stack.Screen name="question" component={QuestionScreen} />
       <Stack.Screen name="demo" component={DemoScreen} />
     </Stack.Navigator>
   )
